@@ -27,7 +27,7 @@ openssl_x509 node['postgresql']['config']['ssl_cert_file'] do
   country x509_subject['country']
   expire x509_subject['expire'] if x509_subject.has_key?('expire')
   key_file node['postgresql']['config']['ssl_key_file']
-  mode 00644
+  mode "0644"
 end
 
 # The openssl_x509 resource doesn't support setting the key file mode,
