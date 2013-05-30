@@ -114,3 +114,21 @@ suites:
         service_name: "postgresql-9.2"
       password:
         postgres: "iloverandompasswordsbutthiswilldo"
+
+- name: self-signed-ssl
+  run_list:
+  - recipe[postgresql::server]
+  excludes: ["centos-5.9", "centos-6.4"]
+  attributes:
+    postgresql:
+      password:
+        postgres: "iloverandompasswordsbutthiswilldo"
+      config:
+        ssl_cert_file: "/etc/ssl/certs/postgresql.pem"
+        ssl_key_file: "/etc/ssl/certs/postgresql.pem"
+        ssl: on
+      server:
+        x509_subject:
+         country: "US"
+         org: "Example, Com"
+         org_unit: "Operations"

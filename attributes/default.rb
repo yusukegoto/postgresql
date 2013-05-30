@@ -414,6 +414,29 @@ default['postgresql']['pgdg']['repo_rpm_url'] = {
         "x86_64" => "http://yum.postgresql.org/8.4/fedora/fedora-7-x86_64/"
       }
     }
-  },
-};
+  }
+}
 
+# Set the x509_subject attribute to pass into automatic certificate
+# generation. This is an empty hash by default as the correct default
+# values for a given enviornment are unknown.
+#
+# Example (in a role):
+#
+# default_attributes(
+#   'postgresql' => {
+#     'server' => {
+#       'x509_subject' => {
+#         'expire' => 3650,
+#         'country' => 'US',
+#         'org' => 'Your Company, Inc.',
+#         'org_unit' => 'Your Department',
+#         'common_name' => '*.yourcompanyname.com'
+#       }
+#     }
+#   }
+# )
+
+if node['postgresql']['config']['ssl']
+  default['postgresql']['server']['x509_subject'] = {}
+end

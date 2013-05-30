@@ -57,6 +57,9 @@ when "debian"
   include_recipe "postgresql::server_debian"
 end
 
+# If the user has set x509 subject attributes, then generate cert:
+include_recipe "postgresql::ssl_cert" unless node['postgresql']['server']['x509_subject'].empty?
+
 template "#{node['postgresql']['dir']}/postgresql.conf" do
   source "postgresql.conf.erb"
   owner "postgres"
