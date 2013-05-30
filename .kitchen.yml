@@ -125,7 +125,7 @@ suites:
         postgres: "iloverandompasswordsbutthiswilldo"
       config:
         ssl_cert_file: "/etc/ssl/certs/postgresql.pem"
-        ssl_key_file: "/etc/ssl/certs/postgresql.pem"
+        ssl_key_file: "/etc/ssl/private/postgresql.key"
         ssl: on
       server:
         x509_subject:

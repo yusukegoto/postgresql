@@ -25,7 +25,7 @@ openssl_x509 node['postgresql']['config']['ssl_cert_file'] do
   org x509_subject['org']
   org_unit x509_subject['org_unit']
   country x509_subject['country']
-  expire x509_subject['expire'] if x509_subject.has_key?('expire')
+  expire x509_subject['expire'] || 3650
   key_file node['postgresql']['config']['ssl_key_file']
   mode "0644"
 end
@@ -34,5 +34,5 @@ end
 # only the certificate. PostgreSQL expects restricted permission on
 # the key.
 file node['postgresql']['config']['ssl_key_file'] do
-  mode 00640
+  mode "0640"
 end
