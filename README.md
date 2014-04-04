@@ -3,6 +3,11 @@ Description
 
 Installs and configures PostgreSQL as a client or a server.
 
+This master branch contains 2 commits below.
+
+CentOS 6.4 due to package 'libpq-dev: `cf023f4`
+assign-postgres-password works on custom ports: `dee28bd`
+
 Requirements
 ============
 
